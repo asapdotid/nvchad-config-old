@@ -1,4 +1,4 @@
-local overrides = require "custom.configs.overrides"
+local overrides = require("custom.configs.overrides")
 
 -- Library configs
 local M = {}
@@ -15,13 +15,13 @@ M.nvim_lspconfig = function(active)
           {
             "jose-elias-alvarez/null-ls.nvim",
             config = function()
-              require "custom.configs.null-ls"
+              require("custom.configs.null-ls")
             end,
           },
         },
         config = function()
-          require "plugins.configs.lspconfig"
-          require "custom.configs.lspconfig"
+          require("plugins.configs.lspconfig")
+          require("custom.configs.lspconfig")
         end, -- Override to setup mason-lspconfig
       },
     }
@@ -97,7 +97,7 @@ M.colorizer = function(active)
         "NvChad/nvim-colorizer.lua",
         enabled = true,
         config = function()
-          require "custom.configs.colorizer"
+          require("custom.configs.colorizer")
         end,
       },
     }
@@ -116,12 +116,12 @@ M.dressing = function(active)
         init = function()
           ---@diagnostic disable-next-line: duplicate-set-field
           vim.ui.select = function(...)
-            require("lazy").load { plugins = { "dressing.nvim" } }
+            require("lazy").load({ plugins = { "dressing.nvim" } })
             return vim.ui.select(...)
           end
           ---@diagnostic disable-next-line: duplicate-set-field
           vim.ui.input = function(...)
-            require("lazy").load { plugins = { "dressing.nvim" } }
+            require("lazy").load({ plugins = { "dressing.nvim" } })
             return vim.ui.input(...)
           end
         end,
@@ -134,7 +134,7 @@ end
 -- CMP cmdline configs
 M.cmp_cmdline = function(active)
   local config = {}
-  local noice = require "custom.configs.noice"
+  local noice = require("custom.configs.noice")
   if active then
     config = {
       {
@@ -151,7 +151,7 @@ M.cmp_cmdline = function(active)
         "hrsh7th/cmp-cmdline",
         event = "VeryLazy",
         config = function()
-          require "custom.configs.cmp-cmdline"
+          require("custom.configs.cmp-cmdline")
         end,
       },
     }
@@ -182,18 +182,18 @@ M.debug = function(active)
         "rcarriga/nvim-dap-ui",
         event = "BufRead",
         dependencies = "mfussenegger/nvim-dap",
-        enabled = vim.fn.has "win32" == 0,
+        enabled = vim.fn.has("win32") == 0,
         config = function()
-          require "custom.configs.dapui"
+          require("custom.configs.dapui")
         end,
       },
       {
         "jay-babu/mason-nvim-dap.nvim",
         event = "BufRead",
         dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
-        enabled = vim.fn.has "win32" == 0,
+        enabled = vim.fn.has("win32") == 0,
         init = function()
-          require "custom.configs.mason-dap"
+          require("custom.configs.mason-dap")
         end,
       },
     }
@@ -205,21 +205,16 @@ end
 
 M.which_key = function(active)
   local config = {}
+  local which_key = require("custom.configs.which-key")
   if active then
     config = {
       {
         "folke/which-key.nvim",
         keys = { "<leader>", '"', "'", "`", "c", "v" },
         init = function()
-          require("core.utils").load_mappings "whichkey"
+          require("core.utils").load_mappings("whichkey")
         end,
-        opts = function()
-          return require "custom.configs.whichkey"
-        end,
-        config = function(_, opts)
-          dofile(vim.g.base46_cache .. "whichkey")
-          require("which-key").setup(opts)
-        end,
+        opts = which_key.opts,
       },
     }
   end

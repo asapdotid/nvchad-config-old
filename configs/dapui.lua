@@ -11,7 +11,7 @@ if not dap_ui_status_ok then
 end
 
 -- dapui.setup()
-dapui.setup {
+dapui.setup({
   icons = { expanded = "▾", collapsed = "▸" },
   mappings = {
     -- Use a table to apply multiple mappings
@@ -24,7 +24,7 @@ dapui.setup {
   },
   -- Expand lines larger than the window
   -- Requires >= 0.7
-  expand_lines = vim.fn.has "nvim-0.7",
+  expand_lines = vim.fn.has("nvim-0.7"),
   -- Layouts define sections of the screen to place windows.
   -- The position can be "left", "right", "top" or "bottom".
   -- The size specifies the height/width depending on position. It can be an Int
@@ -65,7 +65,7 @@ dapui.setup {
   render = {
     max_type_length = nil, -- Can be integer or nil.
   },
-}
+})
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
   -- dapui.setup()

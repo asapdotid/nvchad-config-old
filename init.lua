@@ -9,4 +9,4 @@ autocmd("VimResized", {
 local opt = vim.opt
 opt.cmdheight = 0
 
-require "custom.configs.format-onsave"
+require("custom.configs.format-onsave")

@@ -1,4 +1,4 @@
-require("colorizer").setup {
+require("colorizer").setup({
   filetypes = {
     "css",
     "javascript",
@@ -8,4 +8,4 @@ require("colorizer").setup {
     html = { mode = "foreground" },
   },
   user_default_options = { mode = "background" },
-}
+})

@@ -1,4 +1,4 @@
-local libraries = require "custom.libraries"
+local libraries = require("custom.libraries")
 
 local activate_nvim_lspconfig = true
 local activate_mason = true
