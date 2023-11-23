@@ -12,7 +12,7 @@ git clone https://github.com/NvChad/NvChad $HOME/.config/nvim --depth 1
 
 ## Setup custom config
 
-Go to `NvChad` config on `$HOME/.config/nvim`, copy **this custom config** to `custom` directory
+Go to `NvChad` config on `$HOME/.config/nvim`, copy **this custom config** to `lua/custom` directory
 
 ## Run `nvim` to setup plugins
 
